@@ -69,6 +69,14 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         return pc
     }()
     
+    // changes the dots as soon as ended dragging!
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // tells you were the animation is going to stop the animation of the drag
+        let x = targetContentOffset.pointee.x
+        // (x / view.frame.width) for each page will be basically the index of the collectionView!
+        pageControl.currentPage = Int(x / view.frame.width)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
