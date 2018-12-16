@@ -44,6 +44,8 @@ class PageCell: UICollectionViewCell {
         return textView
     }()
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpLayout()
@@ -74,6 +76,7 @@ class PageCell: UICollectionViewCell {
         descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24).isActive = true
         descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

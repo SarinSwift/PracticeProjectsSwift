@@ -21,6 +21,54 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
 //    let imageNames = ["bear_first", "heart_second", "leaf_third"]
 //    let headerString = ["Join us today in our fun and games!", "Subscribe and get couponson our daily events", "VIP members special services"]
     
+    private let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("PREV", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func handlePrev() {
+        let prevIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: prevIndex, section: 0)
+        pageControl.currentPage = prevIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    private let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("NEXT", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.mainPink, for: .normal)
+        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        return button
+    }()
+    
+    // outside classes can not access
+    @objc private func handleNext() {
+        // min function to handle the app not crashing from invalid index count
+        let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
+        // item:,section: is for collections view!
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    // lazy var to access members within your class
+    private lazy var pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = pages.count
+        pc.currentPageIndicatorTintColor = .mainPink
+        pc.pageIndicatorTintColor = #colorLiteral(red: 0.9764705882, green: 0.8117647059, blue: 0.8784313725, alpha: 1)
+        return pc
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +76,21 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         // snaps to a page
         collectionView.isPagingEnabled = true
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: "cellId")
+        setUpBottomControls()
+    }
+    
+    private func setUpBottomControls() {
+        let bottomControlStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
+        bottomControlStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomControlStackView.distribution = .fillEqually
+        view.addSubview(bottomControlStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomControlStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
     }
     
     // 0 so when you drag to the next page, it won't show a bit of the other page
