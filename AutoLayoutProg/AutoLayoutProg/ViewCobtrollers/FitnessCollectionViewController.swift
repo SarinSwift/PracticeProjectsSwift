@@ -95,6 +95,8 @@ class FitnessCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected at \(indexPath)")
+        let thirtyDaysTableVC = ThirtyDaysTableViewController()
+        navigationController?.pushViewController(thirtyDaysTableVC, animated: true)
     }
 
 }

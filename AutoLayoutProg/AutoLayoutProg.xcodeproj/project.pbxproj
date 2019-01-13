@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0458CECD21EA8CDB009EDD50 /* ThirtyDaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458CECC21EA8CDB009EDD50 /* ThirtyDaysTableViewController.swift */; };
 		0484939E21C2FA2400BDEE1B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484939D21C2FA2400BDEE1B /* Color.swift */; };
 		048493A021C2FA6D00BDEE1B /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484939F21C2FA6D00BDEE1B /* SwipingController.swift */; };
 		048493A221C4889F00BDEE1B /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048493A121C4889F00BDEE1B /* PageCell.swift */; };
@@ -18,9 +19,13 @@
 		04BA72CB21C1846400BC47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA72C921C1846400BC47B6 /* Main.storyboard */; };
 		04BA72CD21C1846400BC47B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BA72CC21C1846400BC47B6 /* Assets.xcassets */; };
 		04BA72D021C1846400BC47B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA72CE21C1846400BC47B6 /* LaunchScreen.storyboard */; };
+		04D09D1B21E58F980065EFDE /* FitnessCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D09D1A21E58F980065EFDE /* FitnessCollectionViewController.swift */; };
+		04D09D1D21E592DE0065EFDE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D09D1C21E592DE0065EFDE /* CardCell.swift */; };
+		04D09D1F21E594CD0065EFDE /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D09D1E21E594CD0065EFDE /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0458CECC21EA8CDB009EDD50 /* ThirtyDaysTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirtyDaysTableViewController.swift; sourceTree = "<group>"; };
 		0484939D21C2FA2400BDEE1B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0484939F21C2FA6D00BDEE1B /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		048493A121C4889F00BDEE1B /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
@@ -34,6 +39,9 @@
 		04BA72CC21C1846400BC47B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04BA72CF21C1846400BC47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04BA72D121C1846400BC47B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D09D1A21E58F980065EFDE /* FitnessCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCollectionViewController.swift; sourceTree = "<group>"; };
+		04D09D1C21E592DE0065EFDE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		04D09D1E21E594CD0065EFDE /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,8 @@
 				0484939F21C2FA6D00BDEE1B /* SwipingController.swift */,
 				0498ABAB21C70E8200BA84FC /* SwipingController+Extensions.swift */,
 				0498ABAD21C70FC400BA84FC /* SwipingController+UICollectionView.swift */,
+				04D09D1A21E58F980065EFDE /* FitnessCollectionViewController.swift */,
+				0458CECC21EA8CDB009EDD50 /* ThirtyDaysTableViewController.swift */,
 			);
 			path = ViewCobtrollers;
 			sourceTree = "<group>";
@@ -70,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				048493A121C4889F00BDEE1B /* PageCell.swift */,
+				04D09D1C21E592DE0065EFDE /* CardCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -78,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				048493A621C49ED700BDEE1B /* Page.swift */,
+				04D09D1E21E594CD0065EFDE /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,14 +197,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D09D1B21E58F980065EFDE /* FitnessCollectionViewController.swift in Sources */,
 				0498ABAE21C70FC400BA84FC /* SwipingController+UICollectionView.swift in Sources */,
 				0498ABAC21C70E8200BA84FC /* SwipingController+Extensions.swift in Sources */,
 				04BA72C821C1846400BC47B6 /* ViewController.swift in Sources */,
 				048493A221C4889F00BDEE1B /* PageCell.swift in Sources */,
+				04D09D1D21E592DE0065EFDE /* CardCell.swift in Sources */,
+				0458CECD21EA8CDB009EDD50 /* ThirtyDaysTableViewController.swift in Sources */,
 				048493A721C49ED700BDEE1B /* Page.swift in Sources */,
 				04BA72C621C1846400BC47B6 /* AppDelegate.swift in Sources */,
 				0484939E21C2FA2400BDEE1B /* Color.swift in Sources */,
 				048493A021C2FA6D00BDEE1B /* SwipingController.swift in Sources */,
+				04D09D1F21E594CD0065EFDE /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

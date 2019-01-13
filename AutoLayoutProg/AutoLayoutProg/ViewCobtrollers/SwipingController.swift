@@ -15,9 +15,9 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     
     
     let pages: [Page] = [
-        Page(imageName: "bear_first", headerText: "Join us today in our fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon"),
-        Page(imageName: "heart_second", headerText: "Subscribe and get couponson our daily events", bodyText: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you also have"),
-        Page(imageName: "leaf_third", headerText: "VIP members special services", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon")
+        Page(imageName: "bear_first", headerText: "Join us today in our fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon", chalOne: "Squat 10 times", chalTwo: "1 minute plank"),
+        Page(imageName: "heart_second", headerText: "Subscribe and get couponson our daily events", bodyText: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you also have", chalOne: "Drink water", chalTwo: "no boba for today"),
+        Page(imageName: "leaf_third", headerText: "VIP members special services", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon", chalOne: "Think positively", chalTwo: "10 pushups!")
     ]
     // don't use these seperate codes because it can cause problems when you don't have equal counts on both
 //    let imageNames = ["bear_first", "heart_second", "leaf_third"]
@@ -102,7 +102,5 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
             bottomControlStackView.heightAnchor.constraint(equalToConstant: 50)
             ])
     }
-    
-    
     
 }

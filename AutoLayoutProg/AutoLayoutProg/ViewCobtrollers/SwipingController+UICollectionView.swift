@@ -34,6 +34,11 @@ extension SwipingController {
         //        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected at \(indexPath)")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.bounds.width, height: view.bounds.height)
     }

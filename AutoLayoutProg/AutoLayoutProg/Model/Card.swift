@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct Card {
+    let titleLabel: String
+    let descriptionLabel: String
+    let chalOne: String
+    let chalTwo: String
+}
