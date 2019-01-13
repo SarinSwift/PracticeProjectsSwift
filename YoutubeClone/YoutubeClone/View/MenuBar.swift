@@ -32,7 +32,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
-        collectionView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        // Sets the first image to be 'selected' on launch!!
+        let selectedIndexPath = NSIndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
