@@ -28,10 +28,17 @@ class BaseCell: UICollectionViewCell {
 
 class VideoCell: BaseCell {
     
+    // this gets called in cellForRowAt
+    var video: Video? {
+        didSet {
+            titleLabel.text = video?.title
+            thumbnailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
+        }
+    }
+    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-        imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -48,7 +55,6 @@ class VideoCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Taylor Swift - Blank Space"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
