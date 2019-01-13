@@ -95,8 +95,8 @@
 		04EB43A921DA9B34007C83B9 /* YoutubeClone */ = {
 			isa = PBXGroup;
 			children = (
-				04E732F121EB1500005A80CE /* Model */,
 				04EB43AA21DA9B34007C83B9 /* AppDelegate.swift */,
+				04E732F121EB1500005A80CE /* Model */,
 				048A759321DDD97F009508E1 /* View */,
 				048A759621DDD9EC009508E1 /* Controller */,
 				048A759021DDD8ED009508E1 /* Helpers */,

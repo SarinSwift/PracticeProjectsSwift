@@ -32,7 +32,36 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             titleLabel.text = video?.title
-            thumbnailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
+            if let thumbnailImageName = video?.thumbnailImageName {
+                thumbnailImageView.image = UIImage(named: thumbnailImageName)
+            }
+            if let profileImageName = video?.channel?.profileImageName {
+                userProfileImageView.image = UIImage(named: profileImageName)
+            }
+            if let videoChannelName = video?.channel?.name, let videoNumberOfViews = video?.numberOfViews {
+                // number formatter creates the commas in large number values
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                let subtitleText = "\(videoChannelName) • \(numberFormatter.string(from: videoNumberOfViews)!) views • 2 years ago"
+                subtitletextView.text = subtitleText
+            }
+            
+            // measure the title text
+            if let videoTitle = video?.title {
+                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                // size of the entire text
+                let estimatedRect = NSString(string: videoTitle).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+
+                if estimatedRect.size.height > 18 {
+                    titleLabelHeightConstraint?.constant = 44
+                } else {
+                    titleLabelHeightConstraint?.constant = 20
+                }
+            }
+            
+            
         }
     }
     
@@ -55,6 +84,7 @@ class VideoCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -74,6 +104,8 @@ class VideoCell: BaseCell {
         return view
     }()
     
+    var titleLabelHeightConstraint: NSLayoutConstraint?
+    
     
     override func setupViews() {
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -91,7 +123,7 @@ class VideoCell: BaseCell {
         
         // vertical constraints
         // seperatorView: 1 pixel tall (1) it will only touch the bottom edge not the top edge
-        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, seperatorView)
+        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: thumbnailImageView, userProfileImageView, seperatorView)
         // horizontally from left edge to right edge
         addConstraintsWithFormat(format: "H:|[v0]|", views: seperatorView)
         
@@ -102,7 +134,8 @@ class VideoCell: BaseCell {
         // right constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0))
         // height constraint
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        titleLabelHeightConstraint = NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)
+        addConstraint(titleLabelHeightConstraint!)
         
         addConstraint(NSLayoutConstraint(item: subtitletextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8))
         addConstraint(NSLayoutConstraint(item: subtitletextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
