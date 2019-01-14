@@ -32,12 +32,11 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             titleLabel.text = video?.title
-            if let thumbnailImageName = video?.thumbnailImageName {
-                thumbnailImageView.image = UIImage(named: thumbnailImageName)
-            }
-            if let profileImageName = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImageName)
-            }
+            
+            setupThumbnailImage()
+            
+            setProfileImage()
+            
             if let videoChannelName = video?.channel?.name, let videoNumberOfViews = video?.numberOfViews {
                 // number formatter creates the commas in large number values
                 let numberFormatter = NumberFormatter()
@@ -65,6 +64,35 @@ class VideoCell: BaseCell {
         }
     }
     
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = video?.thumbnailImageName {
+            
+            thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+            
+            // This code below is also used in setProfileImage(), so we created an extension for UIimageView to eliminate redundant code
+//            let url = URL(string: thumbnailImageUrl)
+//            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+//                if error != nil {
+//                    print(error)
+//                    return
+//                }
+//                // prevent the images from getting in another cell!!
+//                // the url takes a bit time to render the images and that makes it load onto the cell quite slow
+//                // it's taking the data -> returning it to the iphone -> then refreshing it up
+//                DispatchQueue.main.async {
+//                    self.thumbnailImageView.image = UIImage(data: data!)
+//                }
+//
+//            }.resume()
+        }
+    }
+    
+    func setProfileImage() {
+        if let profileImageUrl = video?.channel?.profileImageName {
+            userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+        }
+    }
+    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -79,6 +107,7 @@ class VideoCell: BaseCell {
         imageView.image = UIImage(named: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

@@ -29,3 +29,24 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+extension UIImageView {
+    
+    func loadImageUsingUrlString(urlString: String) {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                print(error)
+                return
+            }
+            // prevent the images from getting in another cell!!
+            // the url takes a bit time to render the images and that makes it load onto the cell quite slow
+            // it's taking the data -> returning it to the iphone -> then refreshing it up
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+            }
+            
+            }.resume()
+    }
+    
+}
