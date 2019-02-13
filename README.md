@@ -20,3 +20,13 @@ Link to [this](https://www.youtube.com/playlist?list=PL0dzCUj1L5JGKdVUtA5xds1zcy
 * Custom navigation bars
 * Custom MenuBar
 * MVC strucuring
+
+## Ultravisual_Kit
+Learn how to make expanding cells in iOS collection views
+
+Link to [this](https://www.raywenderlich.com/7246-expanding-cells-in-ios-collection-views)👈🏼 tutorial
+* Custom CollectionViewCell
+* Animations
+* Scaling Cells
+* Smooth Scrolling
+* Tap to select cell
