@@ -30,3 +30,11 @@ Link to [this](https://www.raywenderlich.com/7246-expanding-cells-in-ios-collect
 * Scaling Cells
 * Smooth Scrolling
 * Tap to select cell
+
+## TextToSpeech
+Simple project that takes an input text and turns that into speech.
+
+AVSpeechSynthesizer()  
+AVSpeechUtterance(string: textField.text!)  
+AVSpeechSynthesisVoice(language: "en-EN")  
+synthesizer.speak(utterance)  
