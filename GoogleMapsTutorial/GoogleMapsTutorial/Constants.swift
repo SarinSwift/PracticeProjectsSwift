@@ -9,6 +9,6 @@
 import Foundation
 
 class Constants {
-    static let apiKey = ""
+    static let apiKey = "abc"
 }
 
