@@ -1,0 +1,6 @@
+framework module Pods_GoogleMapsTutorial {
+  umbrella header "Pods-GoogleMapsTutorial-umbrella.h"
+
+  export *
+  module * { export * }
+}
