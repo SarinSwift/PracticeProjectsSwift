@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DIningPhilosophers.xcodeproj">
+      location = "self:SwiftUIPractice.xcodeproj">
    </FileRef>
 </Workspace>
