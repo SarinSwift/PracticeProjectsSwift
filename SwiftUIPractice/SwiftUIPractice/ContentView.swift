@@ -9,18 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var rooms: [Room] = testData
+    
     var body: some View {
         
         // Where we create something that looks like a tableView
-        List(0..<5) { _ in
+        List(rooms) { room in
             // Creating a horizontal stackView encapsulated by a vertical stack view
-            HStack {
-                Image(systemName: "photo")
-                // creating a vertical stack view
-                VStack(alignment: .leading, spacing: 1) {
-                    Text("Rooms")
-                    Text("10 people")
-                }
+            Image(systemName: "photo")
+            
+            // creating a vertical stack view
+            VStack(alignment: .leading, spacing: 1) {
+                Text(room.name)
+                Text("\(room.capacity) people")
+                    .font(.subheadline).foregroundColor(.secondary)
             }
         }
         
@@ -29,6 +32,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        // NOTE: this testData will only be showed on the side canvas
+        ContentView(rooms: testData)
     }
 }
