@@ -13,18 +13,21 @@ struct ContentView: View {
     var rooms: [Room] = testData
     
     var body: some View {
-        
-        // Where we create something that looks like a tableView
-        List(rooms) { room in
-            // Creating a horizontal stackView encapsulated by a vertical stack view
-            Image(systemName: "photo")
-            
-            // creating a vertical stack view
-            VStack(alignment: .leading, spacing: 1) {
-                Text(room.name)
-                Text("\(room.capacity) people")
-                    .font(.subheadline).foregroundColor(.secondary)
+        // Wraping the list in a navigation controller
+        NavigationView {
+            List(rooms) { room in
+                // Makes the cell selectable and pushes to a new page
+                NavigationLink(destination: Text(room.name)) {
+                    Image(systemName: "photo")
+                    
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(room.name)
+                        Text("\(room.capacity) people")
+                            .font(.subheadline).foregroundColor(.secondary)
+                    }
+                }
             }
+            .navigationBarTitle("Rooms")
         }
         
     }
